@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
         .mono { font-family: 'JetBrains Mono', monospace; }
         
         /* Asymmetrical Typography */
-        .hero-title { font-size: clamp(1.5rem, 8vw, 8rem); line-height: 0.8; letter-spacing: -0.05em; word-break: break-word; }
+        .hero-title { font-size: clamp(2rem, 6vw, 8rem); line-height: 0.8; letter-spacing: -0.05em; }
         
         /* Reveal Animations */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -52,107 +52,31 @@
             font-family: 'Great Vibes', cursive;
         }
 
+
+        #box-3d {
+            /* Prevents the "snapping" feel of JS updates */
+            transition: transform 0.1s ease-out; 
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        /* Optional: add a dynamic shadow that moves opposite to the tilt */
+        #box-3d::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.1);
+            filter: blur(20px);
+            transform: translateZ(-50px) scale(0.9);
+        }
+
+
         /* wobble animation */
-        .wobble {
+
+        .wobble{
             position: relative;
             animation: moveBox 2s ease-in-out infinite alternate;
-        }
 
-        /* Responsive Typography System */
-        h1 { font-size: clamp(1.5rem, 6vw, 8rem); }
-        h2 { font-size: clamp(1.25rem, 5vw, 3.5rem); }
-        h3 { font-size: clamp(1rem, 4vw, 2.5rem); }
-        h4 { font-size: clamp(0.875rem, 3vw, 1.75rem); }
-        p { font-size: clamp(0.75rem, 2vw, 1.125rem); }
-
-        /* Responsive Spacing */
-        :root {
-            --spacing-xs: clamp(0.5rem, 2vw, 1rem);
-            --spacing-sm: clamp(0.75rem, 3vw, 1.5rem);
-            --spacing-md: clamp(1rem, 4vw, 2rem);
-            --spacing-lg: clamp(1.5rem, 6vw, 3rem);
-            --spacing-xl: clamp(2rem, 8vw, 4rem);
-        }
-
-        /* Aspect Ratios */
-        .aspect-video { aspect-ratio: 16 / 9; }
-        .aspect-square { aspect-ratio: 1 / 1; }
-        .aspect-portrait { aspect-ratio: 3 / 4; }
-        .aspect-landscape { aspect-ratio: 4 / 3; }
-
-        /* Container Queries for Flexibility */
-        @supports (container-type: inline-size) {
-            .responsive-container {
-                container-type: inline-size;
-            }
-        }
-
-        /* Flexible Images */
-        img { max-width: 100%; height: auto; display: block; }
-        svg { max-width: 100%; height: auto; }
-
-        /* Responsive Grid */
-        @media (max-width: 320px) {
-            body { font-size: 12px; }
-            main { padding: var(--spacing-xs); }
-        }
-
-        @media (max-width: 480px) {
-            section { padding: var(--spacing-sm) !important; }
-            .max-w-\[1700px\] { padding: 0 var(--spacing-xs); }
-        }
-
-        @media (max-width: 640px) {
-            .grid { gap: var(--spacing-md); }
-            .grid-cols-2 { grid-template-columns: 1fr; }
-            .md\:grid-cols-2 { grid-template-columns: 1fr; }
-            .md\:grid-cols-3 { grid-template-columns: 1fr; }
-            .md\:flex-row { flex-direction: column; }
-            .md\:px-12 { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
-            .flex-col-reverse { flex-direction: column; }
-        }
-
-        @media (max-width: 768px) {
-            section { padding: var(--spacing-lg) var(--spacing-sm); }
-            .md\:grid-cols-3 { grid-template-columns: 1fr; }
-            .md\:px-12 { padding-left: var(--spacing-md); padding-right: var(--spacing-md); }
-            .space-x-12 { gap: var(--spacing-md); flex-wrap: wrap; }
-        }
-
-        @media (max-width: 1024px) {
-            .lg\:grid-cols-2 { grid-template-columns: 1fr; }
-        }
-
-        /* Landscape Orientation */
-        @media (max-height: 500px) {
-            section { padding: var(--spacing-sm) var(--spacing-md); }
-            .min-h-screen { min-height: auto; }
-        }
-
-        /* Portrait Orientation */
-        @media (max-width: 600px) and (orientation: portrait) {
-            section { padding: var(--spacing-sm) var(--spacing-xs); }
-        }
-
-        /* Touch Device Optimizations */
-        @media (hover: none) and (pointer: coarse) {
-            .btn-action { width: 60px; height: 60px; }
-            button { padding: 1rem; }
-        }
-
-        /* High DPI Displays */
-        @media (min-resolution: 2dppx) {
-            body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        }
-
-        /* Reduced Motion Safety */
-        @media (prefers-reduced-motion: reduce) {
-            * { animation: none !important; transition: none !important; }
-        }
-
-        /* Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            /* Adjustments for dark mode if needed */
         }
 
         @keyframes moveBox {
@@ -168,11 +92,11 @@
 </head>
 <body class="min-h-screen flex flex-col bg-[#fafafa]">
     
-    <section class="min-h-screen flex flex-col justify-between px-4 sm:px-6 md:px-12 relative overflow-hidden bg-[#fafafa]">
+    <section class="min-h-screen max-h-screen flex flex-col justify-between px-6 md:px-12 relative overflow-hidden bg-[#fafafa]">
 
         <nav class="top-0 left-0 w-full z-[100] mt-4 p-6 md:px-7 md:py-4 flex justify-between items-center pointer-events-none duration-300"  id="navbar">
-            <div class="pointer-events-auto px-2 sm:px-3 md:px-4 py-2 sm:py-3 flex justify-center items-center">
-                <svg class="logo h-12 sm:h-16 md:h-20 w-auto transition-colors duration-300" viewBox="0 0 500 500">
+            <div class="pointer-events-auto px-4 py-3 flex justify-center items-center">
+                <svg class="logo h-20 w-auto transition-colors duration-300" viewBox="0 0 500 500">
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                             width="100%" viewBox="0 0 432 448" enable-background="new 0 0 432 448" xml:space="preserve">
                         <path fill="currentColor" opacity="1.000000" stroke="currentColor" 
@@ -303,9 +227,9 @@
                         z"/>
                     </svg>
                 </svg>
-                <div class="ml-2 sm:ml-3 md:ml-4 text-sm sm:text-base md:text-[24px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] text-center leading-tight sm:leading-4 md:leading-5"> Dharani <br /> <span class="text-[0.6rem] sm:text-[8px] md:text-[12px] opacity-40"> Printpak </span> </div>
+                <div class="ml-4 text-[24px] font-bold uppercase tracking-[0.2em] text-center leading-5"> Dharani <br /> <span class="text-[12px] opacity-40"> Printpak </span> </div>
             </div>
-            <div class="hidden lg:flex pointer-events-auto bg-black text-white px-6 md:px-8 py-3 md:py-4 rounded-full gap-4 md:gap-8 text-[0.65rem] md:text-[10px] font-black uppercase tracking-widest shadow-2xl" id="nav-menu">
+            <div class="hidden lg:flex pointer-events-auto bg-black text-white px-8 py-4 rounded-full space-x-8 text-[10px] font-black uppercase tracking-widest shadow-2xl" id="nav-menu">
                 <a href="#about" class="hover:text-orange-500 transition">About</a>
                 <a href="#about" class="hover:text-orange-500 transition">Products</a>
 
@@ -327,10 +251,10 @@
                 </h1>
             </div>
 
-            <div class="flex justify-center items-center py-6 sm:py-8 md:py-0">
-                <div class="glass-panel relative w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1500px; aspect-ratio: 1;">
+            <div class="flex justify-center items-center py-10 md:py-0">
+                <div class="glass-panel relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1500px;">
 
-                    <div id="box-3d" class="relative w-32 h-32 sm:w-48 sm:h-48 md:w-60 md:h-60 transition-transform duration-150 ease-out" style="transform-style: preserve-3d;">
+                    <div id="box-3d" class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out  style="transform-style: preserve-3d;">
                         
                         <div class="absolute inset-0 bg-white border-[4px] border-slate-200 flex flex-col items-center justify-center shadow-2xl" style="transform: translateZ(40px);">
                             
@@ -413,22 +337,22 @@
         </div>
     </section>
 
-    <section id="about" class="bg-[#0c0f14] text-white py-12 sm:py-20 md:py-40 px-4 sm:px-6 md:px-12 relative overflow-hidden">
-        <div class="max-w-[1700px] mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-24 items-center">
+    <section id="about" class="bg-[#0c0f14] text-white py-40 px-6 md:px-12 relative overflow-hidden">
+        <div class="max-w-[1700px] mx-auto grid lg:grid-cols-2 gap-24 items-center">
             <div class="reveal">
-                <h2 class="text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.6em] text-orange-500 mb-4 sm:mb-6 md:mb-10">/ Heritage & Evolution</h2>
-                <h3 class="text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl font-black uppercase leading-[0.9] mb-6 sm:mb-8 md:mb-12">Experience <br/> In Every <br/> Box.</h3>
-                <p class="text-slate-400 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed max-w-xl mb-6 sm:mb-10 md:mb-12">
+                <h2 class="text-xs font-black uppercase tracking-[0.6em] text-orange-500 mb-10">/ Heritage & Evolution</h2>
+                <h3 class="text-7xl font-black uppercase leading-[0.9] mb-12">Experience <br/> In Every <br/> Box.</h3>
+                <p class="text-slate-400 text-xl leading-relaxed max-w-xl mb-12">
                     ACESIX is the new chapter of Dharani Printpak, a company built on trust, craftsmanship, and dedication since 1994.
                 </p>
-                <div class="flex gap-4 sm:gap-8 md:gap-12">
+                <div class="flex space-x-12">
                     <div class="group">
-                        <p class="text-2xl sm:text-3xl md:text-4xl font-black group-hover:text-orange-500 transition">30+</p>
-                        <p class="text-[0.65rem] sm:text-[0.75rem] md:text-[9px] font-bold uppercase tracking-widest text-slate-600">Years Expert</p>
+                        <p class="text-4xl font-black group-hover:text-orange-500 transition">30+</p>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-slate-600">Years Expert</p>
                     </div>
                     <div class="group">
-                        <p class="text-2xl sm:text-3xl md:text-4xl font-black group-hover:text-orange-500 transition">100%</p>
-                        <p class="text-[0.65rem] sm:text-[0.75rem] md:text-[9px] font-bold uppercase tracking-widest text-slate-600">Reliability</p> 
+                        <p class="text-4xl font-black group-hover:text-orange-500 transition">100%</p>
+                        <p class="text-[9px] font-bold uppercase tracking-widest text-slate-600">Reliability</p> 
                     </div>
                 </div>
             </div>
@@ -447,106 +371,27 @@
         </div>
     </section>
 
-    <section id="products" class="min-h-screen bg-white px-4 sm:px-6 md:px-12 flex flex-col py-12 sm:py-16 md:py-20 overflow-hidden">
+    <section id="products" class="h-screen bg-white px-6 md:px-12 flex flex-col py-20 overflow-hidden">
     <div class="max-w-[1700px] mx-auto w-full h-full flex flex-col">
         
-        <div class="mb-6 sm:mb-8 md:mb-12 reveal shrink-0">
-            <h2 class="text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.5em] text-orange-600 mb-2 sm:mb-4">Systems Catalog</h2>
-            <h3 class="text-2xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter">Structural Lineup</h3>
+        <div class="mb-12 reveal shrink-0">
+            <h2 class="text-xs font-black uppercase tracking-[0.5em] text-orange-600 mb-4">Systems Catalog</h2>
+            <h3 class="text-5xl font-black uppercase tracking-tighter">Structural Lineup</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 flex-1 min-h-0 mb-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 gap-8 flex-1 min-h-0 h-full mb-4">
             
-            <div class="gallery-card flex flex-col justify-between group relative overflow-hidden reveal bg-[url('./Rigid_Box_V2.png')] bg-cover bg-center border border-slate-100 h-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px]">
-                <div class="p-4 sm:p-6 md:p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./Rigid_Box_V2.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                     <div>
-                        <h4 class="text-lg sm:text-2xl md:text-4xl text-center font-extrabold text-black uppercase mt-2 sm:mt-4 group-hover:text-white duration-500"> Rigid <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
+                        <h4 class="text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
                     </div>
-                    <p class="text-[0.65rem] sm:text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500">Electronics, Luxury Gifts <br> Corporate Gift & Premium Retail</p>
+                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">Electronics, Luxury Gifts <br> Corporate Gift & Premium Retail</p>
                 </div>
 
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-4 sm:p-6 md:p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 overflow-y-auto">
-                    <p class="mono text-[0.65rem] sm:text-[8px] md:text-[10px] mb-2 sm:mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold text-[0.7rem] sm:text-[0.8rem] md:text-base">
-                        Paper bags provide an eco-friendly and practical packaging solution for retail and FMCG products.
-                        Strong, durable, and customizable, they deliver premium presentation with environmental responsibility.
-                        <br /> <br />
-                        We manufacture custom paper bags with reinforced handles, specialty finishes, and custom printing to elevate your brand while supporting sustainability.
-                    </p>
-
-                    <hr class="border border-white/20 my-4 sm:my-6">
-
-                    <ul class="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-white font-bold uppercase tracking-wider text-[0.6rem] sm:text-[0.75rem] md:text-[10px]">
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Kraft Paper
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Twisted Rope Handles
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Custom Printing
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Eco-Friendly Finishes
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Reinforced Construction
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            
-            <div class="gallery-card flex flex-col justify-between group relative overflow-hidden reveal bg-[url('./monocarton.png')] bg-cover bg-center border border-slate-100 h-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px]">
-                <div class="p-4 sm:p-6 md:p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
-                    <div>
-                        <h4 class="text-lg sm:text-2xl md:text-4xl text-center font-extrabold text-black uppercase mt-2 sm:mt-4 group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
-                    </div>
-                    <p class="text-[0.65rem] sm:text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
-                </div>
-
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-4 sm:p-6 md:p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 overflow-y-auto">
-                    <p class="mono text-[0.65rem] sm:text-[8px] md:text-[10px] mb-2 sm:mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold text-[0.7rem] sm:text-[0.8rem] md:text-base">
-                        Monocartons are designed for retail products that require clear branding and structural accuracy.
-                        Crafted from high-quality paperboard, they ensure sharp printing, consistent quality, and dependable protection. 
-                        <br /> <br />
-                        We manufacture custom monocartons engineered for scalable production while maintaining premium visual impact across every unit.
-                    </p>
-
-                    <hr class="border border-white/20 my-4 sm:my-6">
-
-                    <ul class="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-white font-bold uppercase tracking-wider text-[0.6rem] sm:text-[0.75rem] md:text-[10px]">
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            UV Coating
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Lamination (Matte & Gloss)
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Metallic Effects
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            Custom Die-Cut Structures
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors text-center">
-                            High-Precision Printing
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="gallery-card flex flex-col justify-between group relative overflow-hidden reveal bg-[url('./paperbag.png')] bg-cover bg-center border border-slate-100 h-full min-h-[250px] sm:min-h-[300px] md:min-h-[400px]">
-                <div class="p-4 sm:p-6 md:p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
-                    <div>
-                        <h4 class="text-lg sm:text-2xl md:text-4xl text-center font-extrabold text-black uppercase mt-2 sm:mt-4 group-hover:text-white duration-500">Paper <span class="text-orange-600 group-hover:text-black duration-500">Bag</span></h4>
-                    </div>
-                    <p class="text-[0.65rem] sm:text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
-                </div>
-
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-4 sm:p-6 md:p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 overflow-y-auto">
-                    <p class="mono text-[0.65rem] sm:text-[8px] md:text-[10px] mb-2 sm:mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold">
+                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                    <p class="w-full text-justify font-bold ">
                         Rigid boxes are designed for products that require strong protection and refined presentation.
                         Made from high-density board and finished with premium papers, they offer durability along with an
                         elegant look and feel.<br /> <br />
@@ -576,162 +421,251 @@
                 </div>
             </div>
 
+            
+            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./monocarton.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+                    <div>
+                        <h4 class="text-4xl text-center font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
+                    </div>
+                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-center">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                </div>
+
+                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                    <p class="w-full text-justify font-bold">
+                        Monocartons are designed for retail products that require clear branding and structural accuracy.
+                        Crafted from high-quality paperboard, they ensure sharp printing, consistent quality, and dependable protection. 
+                        <br /> <br />
+                        We manufacture custom monocartons engineered for scalable production while maintaining premium visual impact across every unit.
+                    </p>
+
+                    <hr class="border border-white/20 my-6">
+
+                    <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            UV Coating
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Lamination (Matte & Gloss)
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Metallic Effects
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Custom Die-Cut Structures
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            High-Precision Printing
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./paperbag.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+                    <div>
+                        <h4 class="text-4xl text-right font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
+                    </div>
+                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-right">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                </div>
+
+                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                    <p class="w-full text-justify font-bold">
+                        Custom paperboard bags are designed for brands that require durability, reusability, and refined retail presentation.
+                        <br /> <br />
+                        Manufactured using strong boards, they feature reinforced handles and bases to ensure structural strength with high brand visibility.
+                        <br /> <br />
+                        We craft premium paperboard bags for electronics, luxury gifts, and retail packaging — engineered for consistent performance at scale.
+                    </p>
+
+                    <hr class="border border-white/20 my-6">
+
+                    <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Rope or Ribbon Handles
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Textured & Specialty Papers
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Multiple Structural Formats
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Reinforced Bases
+                        </li>
+                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                            Custom Sizes & Printing Finishes
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
 
-    <section id="contact" class="py-12 sm:py-20 md:py-40 bg-[#0c0f14] px-4 sm:px-6 md:px-12">
+    <section id="contact" class="py-40 bg-[#0c0f14] px-6 md:px-12">
         <div class="max-w-4xl mx-auto reveal">
-            <div class="text-center mb-12 sm:mb-16 md:mb-24">
-                <h2 class="text-[0.6rem] sm:text-xs font-black uppercase tracking-[0.3em] sm:tracking-[0.5em] text-orange-500 mb-4 sm:mb-6 md:mb-8">Initiate Partnership</h2>
-                <h3 class="text-3xl sm:text-4xl md:text-6xl font-black uppercase text-white tracking-tighter">Get A Quote</h3>
+            <div class="text-center mb-24">
+                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-orange-500 mb-8">Initiate Partnership</h2>
+                <h3 class="text-6xl font-black uppercase text-white tracking-tighter">Get A Quote</h3>
             </div>
             
-            <form class="space-y-6 sm:space-y-8 md:space-y-10">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                    <div class="group border-b border-white/10 pb-3 sm:pb-4 focus-within:border-orange-500 transition">
-                        <label class="block text-[0.65rem] sm:text-[0.75rem] md:text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Corporate Entity</label>
-                        <input type="text" placeholder="NAME" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10 text-sm md:text-base">
+            <form class="space-y-10">
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="group border-b border-white/10 pb-4 focus-within:border-orange-500 transition">
+                        <label class="block text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Corporate Entity</label>
+                        <input type="text" placeholder="NAME" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10">
                     </div>
-                    <div class="group border-b border-white/10 pb-3 sm:pb-4 focus-within:border-orange-500 transition">
-                        <label class="block text-[0.65rem] sm:text-[0.75rem] md:text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Department Email</label>
-                        <input type="email" placeholder="EMAIL" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10 text-sm md:text-base">
+                    <div class="group border-b border-white/10 pb-4 focus-within:border-orange-500 transition">
+                        <label class="block text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Department Email</label>
+                        <input type="email" placeholder="EMAIL" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10">
                     </div>
                 </div>
-                <div class="group border-b border-white/10 pb-3 sm:pb-4 focus-within:border-orange-500 transition">
-                    <label class="block text-[0.65rem] sm:text-[0.75rem] md:text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Structural Requirements</label>
-                    <textarea rows="4" placeholder="DESCRIBE YOUR PROJECT" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10 text-sm md:text-base"></textarea>
+                <div class="group border-b border-white/10 pb-4 focus-within:border-orange-500 transition">
+                    <label class="block text-[9px] font-black uppercase tracking-widest text-slate-500 mb-2">Structural Requirements</label>
+                    <textarea rows="4" placeholder="DESCRIBE YOUR PROJECT" class="bg-transparent w-full outline-none text-white font-bold placeholder:text-white/10"></textarea>
                 </div>
-                <button class="w-full bg-white text-black py-4 sm:py-6 md:py-8 font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] md:tracking-[0.4em] text-[0.7rem] sm:text-xs hover:bg-orange-600 hover:text-white transition-all shadow-2xl">
+                <button class="w-full bg-white text-black py-8 font-black uppercase tracking-[0.4em] text-xs hover:bg-orange-600 hover:text-white transition-all shadow-2xl">
                     Submit RFQ &rarr;
                 </button>
             </form>
             
-            <div class="mt-12 sm:mt-20 md:mt-32 flex flex-col gap-3 md:gap-0 md:flex-row justify-between text-[0.65rem] sm:text-[0.75rem] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] text-slate-600">
-                <p class="break-all md:break-normal">E: CONTACT@ACESIXPACKAGING.COM</p>
+            <div class="mt-32 flex flex-col md:flex-row justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
+                <p>E: CONTACT@ACESIXPACKAGING.COM</p>
                 <p>P: +91 96557 30523</p>
                 <p>L: SIVAKASI-626189, TN, INDIA</p>
             </div>
         </div>
     </section>
 
-    <footer class="p-4 sm:p-6 md:p-12 border-t border-white/5 bg-[#0c0f14] text-center text-[0.6rem] sm:text-[0.75rem] md:text-[10px] font-bold uppercase tracking-[0.1em] md:tracking-widest text-slate-700">
+    <footer class="p-12 border-t border-white/5 bg-[#0c0f14] text-center text-[10px] font-bold uppercase tracking-widest text-slate-700">
         &copy; 2025 ACESIX PACKAGING | EVOLUTION OF DHARANI PRINTPAK
     </footer>
 
-    <script>
-        /* ================================
-        1. Reveal On Scroll
-        ================================ */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-
-        /* ================================
-        2. Avatar Logic
-        ================================ */
-        const box3d = document.getElementById('box-3d');
-        const pupils = document.querySelectorAll('.pupil');
-        const lids = document.querySelectorAll('.lid');
-        const mouthPath = document.getElementById('mouth-path');
-        const inquiryBtn = document.getElementById('inquiry-btn');
-        const eyeRow = document.getElementById('eye-row');
-
-        let currentEmotion = "neutral";
-
-        /* ================================
-        Emotion System
-        ================================ */
-        function setEmotion(type) {
-            if (currentEmotion === type) return;
-            currentEmotion = type;
-
-            switch (type) {
-                case "happy":
-                    mouthPath.setAttribute("d", "M15 20 Q50 45 85 20");
-                    eyeRow.style.transform = "scaleY(1)";
-                    break;
-                    
-                    default:
-                    eyeRow.style.transform = "scaleY(1.2)";
-                    mouthPath.setAttribute("d", "M30 25 Q50 45 70 25 Q50 5 30 25");
-                }
+<script>
+    /* ================================
+    1. Reveal On Scroll
+    ================================ */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
             }
-                
-            mouthPath.setAttribute("fill", "#0f172a");
-            mouthPath.setAttribute("stroke", "none");
+        });
+    }, { threshold: 0.1 });
 
-        /* ================================
-        Mouse Tracking
-        ================================ */
-        window.addEventListener('mousemove', (e) => {
-            const { clientX, clientY } = e;
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            /* --- 3D Rotation --- */
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
+    /* ================================
+    2. Unified Avatar Logic
+    ================================ */
+    const box3d = document.getElementById('box-3d');
+    const pupils = document.querySelectorAll('.pupil');
+    const lids = document.querySelectorAll('.lid');
+    const mouthPath = document.getElementById('mouth-path');
+    const eyeRow = document.getElementById('eye-row');
+    const inquiryBtn = document.getElementById('inquiry-btn');
 
-            const moveX = (clientX - centerX) / centerX;
-            const moveY = (clientY - centerY) / centerY;
+    // State Variables
+    let currentEmotion = "neutral";
+    const friction = 0.12; 
+    const lookRange = 600; // Distance in px for max rotation
 
-            box3d.style.transform = `
-                rotateY(${moveX * 10}deg)
-                rotateX(${-moveY * 10}deg)
+    // Input & Animation Coordinates
+    let targetX = 0, targetY = 0;
+    let curX = 0, curY = 0;
+    let mouseX = 0, mouseY = 0;
+
+    /* --- Emotion System --- */
+    function setEmotion(type) {
+        if (currentEmotion === type) return;
+        currentEmotion = type;
+
+        if (type === "happy") {
+            mouthPath.setAttribute("d", "M15 20 Q50 45 85 20");
+            eyeRow.style.transform = "scaleY(1)";
+        } else {
+            mouthPath.setAttribute("d", "M30 25 Q50 45 70 25 Q50 5 30 25");
+            eyeRow.style.transform = "scaleY(1.2)";
+        }
+    }
+
+    /* --- Input Tracking --- */
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        // 1. Calculate relative look targets
+        const rect = box3d.getBoundingClientRect();
+        const avatarCenterX = rect.left + rect.width / 2;
+        const avatarCenterY = rect.top + rect.height / 2;
+
+        const deltaX = mouseX - avatarCenterX;
+        const deltaY = mouseY - avatarCenterY;
+
+        // 2. Normalize targets (-1 to 1) based on range
+        targetX = Math.max(-1, Math.min(1, deltaX / lookRange));
+        targetY = Math.max(-1, Math.min(1, deltaY / lookRange));
+
+        // 3. Proximity Logic for Emotion
+        const btnRect = inquiryBtn.getBoundingClientRect();
+        const btnCenterX = btnRect.left + btnRect.width / 2;
+        const btnCenterY = btnRect.top + btnRect.height / 2;
+
+        const dist = Math.sqrt(
+            Math.pow(mouseX - btnCenterX, 2) +
+            Math.pow(mouseY - btnCenterY, 2)
+        );
+
+        if (dist < 400) { // Closer threshold for more responsive feel
+            setEmotion("happy");
+        } else {
+            setEmotion("default");
+        }
+    });
+
+    /* --- Main Animation Loop --- */
+    function animate() {
+        // Interpolation (Smoothing)
+        curX += (targetX - curX) * friction;
+        curY += (targetY - curY) * friction;
+
+        // Apply Box Rotation (Higher multiplier for depth)
+        box3d.style.transform = `
+            rotateY(${curX * 25}deg) 
+            rotateX(${-curY * 25}deg)
+        `;
+
+        // Apply Pupil Parallax (Different multiplier for depth illusion)
+        pupils.forEach(pupil => {
+            pupil.style.transform = `
+                translate(${curX * 14}px, ${curY * 14}px)
             `;
-
-            /* --- Pupil Tracking --- */
-            pupils.forEach(pupil => {
-                pupil.style.transform = `
-                    translate(${moveX * 10}px, ${moveY * 10}px)
-                `;
-            });
-
-            /* --- Emotional Proximity --- */
-            const btnRect = inquiryBtn.getBoundingClientRect();
-            const btnCenterX = btnRect.left + btnRect.width / 2;
-            const btnCenterY = btnRect.top + btnRect.height / 2;
-
-            const dist = Math.sqrt(
-                Math.pow(clientX - btnCenterX, 2) +
-                Math.pow(clientY - btnCenterY, 2)
-            );
-
-            const maxDist = 700;
-            const proximity = Math.max(0, Math.min(1, 1 - (dist / maxDist)));
-
-            if (proximity > 0.35) {
-                setEmotion("happy");
-            }
-            else {
-                setEmotion("default");
-            }
-
         });
 
+        requestAnimationFrame(animate);
+    }
 
-        /* ================================
-        Random Blinking
-        ================================ */
-        function blink() {
-            lids.forEach(lid => lid.style.transform = 'translateY(0%)');
+    // Start the loop
+    animate();
 
-            setTimeout(() => {
-                lids.forEach(lid => lid.style.transform = 'translateY(-100%)');
-            }, 120);
+    /* --- Random Blinking --- */
+    function blink() {
+        lids.forEach(lid => lid.style.transform = 'translateY(0%)');
+        setTimeout(() => {
+            lids.forEach(lid => lid.style.transform = 'translateY(-100%)');
+        }, 120);
+        setTimeout(blink, Math.random() * 4000 + 2500);
+    }
 
-            setTimeout(blink, Math.random() * 4000 + 2500);
-        }
+    blink();
 
-        blink();
-
-    </script>
+    // Initial Mouth Style
+    mouthPath.setAttribute("fill", "#0f172a");
+    mouthPath.setAttribute("stroke", "none");
+</script>
 </body>
 </html>
