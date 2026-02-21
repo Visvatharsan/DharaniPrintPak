@@ -252,48 +252,55 @@
             </div>
 
             <div class="flex justify-center items-center py-10 md:py-0">
-                <div class="glass-panel relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1500px;">
+                <div class="glass-panel relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1000px;">
 
-                    <div id="box-3d" class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out  style="transform-style: preserve-3d;">
-                        
-                        <div class="absolute inset-0 bg-white border-[4px] border-slate-200 flex flex-col items-center justify-center shadow-2xl" style="transform: translateZ(40px);">
+                    <div class="flex items-center justify-center p-20" >
+                        <div id="box-3d" class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out" style="transform-style: preserve-3d;">
                             
-                            <div class="absolute top-4 left-6 flex space-x-1">
-                                <div class="w-1.5 h-4 bg-orange-600"></div>
-                                <div class="w-1.5 h-4 bg-orange-600"></div>
-                                <div class="w-1.5 h-4 bg-slate-100"></div>
-                            </div>
-
-                            <div id="eye-row" class="flex space-x-12 mb-6 transition-transform duration-300">
-                                <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
-                                    <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
-                                    <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+                            <div class="absolute inset-0 bg-white border-4 border-slate-200 flex flex-col items-center justify-center" 
+                                style="transform: translateZ(120px);">
+                                
+                                <div class="absolute top-4 left-6 flex space-x-1">
+                                    <div class="w-1.5 h-4 bg-orange-600"></div>
+                                    <div class="w-1.5 h-4 bg-orange-600"></div>
+                                    <div class="w-1.5 h-4 bg-slate-100"></div>
                                 </div>
-                                <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
-                                    <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
-                                    <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+
+                                <div id="eye-row" class="flex space-x-12 mb-6 transition-transform duration-300">
+                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
+                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+                                    </div>
+                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
+                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+                                    </div>
+                                </div>
+
+                                <div id="mouth-wrapper" class="relative w-16 h-10 flex items-center justify-center">
+                                    <svg id="mouth-svg" viewBox="0 0 100 50" class="w-full h-full transition-all duration-300">
+                                        <path id="mouth-path" d="M15 20 Q50 45 85 20" fill="#0f172a" stroke="none" />
+                                    </svg>
+                                </div>
+
+                                <div class="text-[14px] font-black uppercase tracking-[0.4em] text-slate-300 mono text-center leading-tight mt-6">
+                                    Packsy <br> 
+                                    <span class="text-[8px] text-orange-500 font-bold uppercase">Shelf_Ready</span>
                                 </div>
                             </div>
 
-                            <div id="mouth-wrapper" class="relative w-16 h-10 flex items-center justify-center">
-                                <svg id="mouth-svg" viewBox="0 0 100 50" class="w-full h-full transition-all duration-300">
-                                    <path id="mouth-path"
-                                        d="M15 20 Q50 45 85 20"
-                                        stroke="#0f172a"
-                                        stroke-width="4"
-                                        fill="transparent"
-                                        stroke-linecap="round"/>
-                                </svg>
-                            </div>
+                            <div class="absolute inset-0 bg-slate-200 border-2 border-slate-300" 
+                                style="transform: rotateY(90deg) translateZ(120px);"></div>
 
-                            <div class="text-[14px] font-black uppercase tracking-[0.4em] text-slate-300 mono text-center leading-tight mt-6">
-                                Packsy <br> 
-                                <span class="text-[8px] text-orange-500 font-bold uppercase">Shelf_Ready</span>
-                            </div>
+                            <div class="absolute inset-0 bg-slate-200 border-2 border-slate-300" 
+                                style="transform: rotateY(-90deg) translateZ(120px);"></div>
+
+                            <div class="absolute inset-0 bg-slate-50 border-2 border-slate-200" 
+                                style="transform: rotateX(90deg) translateZ(120px);"></div>
+
+                            <div class="absolute inset-0 bg-slate-300 border-2 border-slate-400" 
+                                style="transform: rotateX(-90deg) translateZ(120px);"></div>
                         </div>
-
-                        <div class="absolute top-0 right-0 h-full w-[80px] bg-slate-200" style="transform: rotateY(90deg) translateZ(-40px);"></div>
-                        <div class="absolute top-0 left-0 w-full h-[80px] bg-slate-100" style="transform: rotateX(90deg) translateZ(40px);"></div>
                     </div>
 
                     <div class="absolute -bottom-10 -left-10 pointer-events-auto">
