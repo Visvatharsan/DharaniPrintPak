@@ -8,87 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
-    
+    <link rel="stylesheet" href="./styles/index.css">
     <title>ACESIX | Premium Industrial Packaging</title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #000000; overflow-x: hidden; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        
-        /* Asymmetrical Typography */
-        .hero-title { font-size: clamp(2rem, 6vw, 8rem); line-height: 0.8; letter-spacing: -0.05em; }
-        
-        /* Reveal Animations */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* The New "Industrial Orange" Circular Button */
-        .btn-action {
-            width: 90px; height: 90px;
-            background-color: #FF5733; 
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .btn-action:hover { transform: scale(1.1) rotate(90deg); border: #FF5733 4px solid; }
-
-        /* Structural Glass Effect */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(40px);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.05), -20px -20px 60px rgba(255, 255, 255, 0.8);
-        }
-
-        /* Gallery Drawer */
-        .gallery-card .drawer {
-            transform: translateX(-100%);
-        }
-        .gallery-card:hover .drawer { transform: translateX(0); }
-
-        .calligraphy-text {
-            font-family: 'Great Vibes', cursive;
-        }
-
-
-        #box-3d {
-            /* Prevents the "snapping" feel of JS updates */
-            transition: transform 0.1s ease-out; 
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        /* Optional: add a dynamic shadow that moves opposite to the tilt */
-        #box-3d::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0,0,0,0.1);
-            filter: blur(20px);
-            transform: translateZ(-50px) scale(0.9);
-        }
-
-
-        /* wobble animation */
-
-        .wobble{
-            position: relative;
-            animation: moveBox 2s ease-in-out infinite alternate;
-
-        }
-
-        @keyframes moveBox {
-            0% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-
-        }
-    </style>
 </head>
 <body class="min-h-screen flex flex-col bg-[#fafafa]">
     
@@ -252,59 +173,77 @@
             </div>
 
             <div class="flex justify-center items-center py-10 md:py-0">
-                <div class="glass-panel relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1000px;">
+                <div class="glass-panel relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] rounded-2xl flex items-center justify-center z-20" style="perspective: 1400px;">
 
-                    <div class="flex items-center justify-center p-20" >
-                        <div id="box-3d" class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out" style="transform-style: preserve-3d;">
+                    <div class="flex items-center justify-center p-20">
+                        <!-- Shadow -->
+                        <div id="ground-shadow"
+                            class="absolute -bottom-20 w-60 h-20 bg-black/30 blur-3xl rounded-full transition-transform duration-100"
+                            style="transform: translateZ(-200px);">
+                        </div>   
+                        <div id="box-3d" 
+                            class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out"
+                            style="transform-style: preserve-3d;">
                             
-                            <div class="absolute inset-0 bg-white border-4 border-slate-200 flex flex-col items-center justify-center" 
-                                style="transform: translateZ(120px);">
-                                
-                                <div class="absolute top-4 left-6 flex space-x-1">
+
+                            <!-- FRONT -->
+                            <div class="cube-face absolute inset-0 bg-gradient-to-br from-white via-white to-slate-200 flex flex-col items-center justify-center shadow-xl"
+                                style="transform: translateZ(120px) scale(1.01);">
+
+                                <!-- Tape -->
+                                <div class="absolute top-4 left-6 flex space-x-1 opacity-80">
                                     <div class="w-1.5 h-4 bg-orange-600"></div>
                                     <div class="w-1.5 h-4 bg-orange-600"></div>
-                                    <div class="w-1.5 h-4 bg-slate-100"></div>
+                                    <div class="w-1.5 h-4 bg-slate-200"></div>
                                 </div>
 
+                                <!-- Eyes -->
                                 <div id="eye-row" class="flex space-x-12 mb-6 transition-transform duration-300">
-                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
-                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
+                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-white shadow-inner shadow-black/40">
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5"></div>
                                         <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
                                     </div>
-                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-slate-50 shadow-inner">
-                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5 shadow-sm"></div>
+                                    <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-white shadow-inner shadow-black/40">
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5"></div>
                                         <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
                                     </div>
                                 </div>
 
+                                <!-- Mouth -->
                                 <div id="mouth-wrapper" class="relative w-16 h-10 flex items-center justify-center">
-                                    <svg id="mouth-svg" viewBox="0 0 100 50" class="w-full h-full transition-all duration-300">
-                                        <path id="mouth-path" d="M15 20 Q50 45 85 20" fill="#0f172a" stroke="none" />
+                                    <svg id="mouth-svg" viewBox="0 0 100 50" class="w-full h-full">
+                                        <path id="mouth-path" d="M15 20 Q50 45 85 20" fill="#0f172a" />
                                     </svg>
                                 </div>
 
-                                <div class="text-[14px] font-black uppercase tracking-[0.4em] text-slate-300 mono text-center leading-tight mt-6">
-                                    Packsy <br> 
+                                <!-- Text -->
+                                <div class="text-[14px] font-black uppercase tracking-[0.4em] text-slate-400 text-center leading-tight mt-6">
+                                    Packsy <br>
                                     <span class="text-[8px] text-orange-500 font-bold uppercase">Shelf_Ready</span>
                                 </div>
                             </div>
 
-                            <div class="absolute inset-0 bg-slate-200 border-2 border-slate-300" 
-                                style="transform: rotateY(90deg) translateZ(120px);"></div>
+                            <!-- RIGHT -->
+                            <div class="cube-face absolute inset-0 bg-slate-300"
+                                style="transform: rotateY(90deg) translateZ(120px) scale(1.01);"></div>
 
-                            <div class="absolute inset-0 bg-slate-200 border-2 border-slate-300" 
-                                style="transform: rotateY(-90deg) translateZ(120px);"></div>
+                            <!-- LEFT -->
+                            <div class="cube-face absolute inset-0 bg-slate-200"
+                                style="transform: rotateY(-90deg) translateZ(120px) scale(1.01);"></div>
 
-                            <div class="absolute inset-0 bg-slate-50 border-2 border-slate-200" 
-                                style="transform: rotateX(90deg) translateZ(120px);"></div>
+                            <!-- TOP -->
+                            <div class="cube-face absolute inset-0 bg-slate-200"
+                                style="transform: rotateX(90deg) translateZ(120px) scale(1.01);"></div>
 
-                            <div class="absolute inset-0 bg-slate-300 border-2 border-slate-400" 
-                                style="transform: rotateX(-90deg) translateZ(120px);"></div>
+                            <!-- BOTTOM -->
+                            <div class="cube-face absolute inset-0 bg-slate-300"
+                                style="transform: rotateX(-90deg) translateZ(120px) scale(1.01);"></div>
+
                         </div>
                     </div>
 
                     <div class="absolute -bottom-10 -left-10 pointer-events-auto">
-                        <a href="#about" class="btn-action hover:shadow-[0_10px_30px_rgba(255,87,51,0.3)] text-white hover:text-[#FF5733] hover:bg-[#fafafa]/40">
+                        <a href="#products" class="btn-action text-white hover:text-[#FF5733] hover:bg-[#fafafa]/40">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path 
                                     stroke-linecap="round" 
@@ -344,6 +283,179 @@
         </div>
     </section>
 
+    <section class="w-full bg-[#0c0f14] py-24 px-6 md:px-12 border-y border-white/5">
+        <div class="max-w-[1700px] mx-auto flex flex-col md:flex-row justify-between items-end gap-12">
+            
+            <div class="max-w-2xl reveal active">
+                <h2 class="text-xs font-black uppercase tracking-[0.6em] text-orange-500 mb-8">/ Strategic Impact</h2>
+                <h3 class="text-5xl md:text-7xl font-black text-white uppercase leading-[0.9] tracking-tighter">
+                    Built to Support <br> Your Brand's Growth
+                </h3>
+                <p class="text-slate-400 text-lg mt-8 max-w-lg leading-relaxed font-medium">
+                    With decades of experience, we deliver packaging that 
+                    evolves with your brand and stands the test of time.
+                </p>
+            </div>
+
+            <div class="flex space-x-16 md:space-x-24 text-white reveal active" style="transition-delay: 200ms;">
+                <div class="group relative">
+                    <span class="absolute -top-8 -left-4 text-8xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-orange-500/10 transition-colors duration-500">30</span>
+                    
+                    <p class="text-6xl md:text-8xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">30<span class="text-orange-500 group-hover:text-white">+</span></p>
+                    <div class="mt-2 flex items-center space-x-2">
+                        <div class="w-8 h-[2px] bg-orange-500"></div>
+                        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Years Expert</p>
+                    </div>
+                </div>
+
+                <div class="group relative">
+                    <span class="absolute -top-8 -left-4 text-8xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-orange-500/10 transition-colors duration-500">100</span>
+                    
+                    <p class="text-6xl md:text-8xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">100<span class="text-orange-500 group-hover:text-white">+</span></p>
+                    <div class="mt-2 flex items-center space-x-2">
+                        <div class="w-8 h-[2px] bg-orange-500"></div>
+                        <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Trusted Brands</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="products" class="h-screen bg-[#fafafa] px-6 md:px-12 flex flex-col py-20 overflow-hidden">
+        <div class="max-w-[1700px] mx-auto w-full h-full flex flex-col">
+            
+            <div class="mb-12 reveal shrink-0">
+                <h2 class="text-xs font-black uppercase tracking-[0.5em] text-orange-600 mb-4">/ Systems Catalog</h2>
+                <h3 class="text-5xl font-black uppercase tracking-tighter">Structural Lineup</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 gap-8 flex-1 min-h-0 h-full mb-4">
+                
+                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/Rigid_Box_V2.png')] bg-cover bg-center border border-slate-100 h-full">
+                    <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+                        <div>
+                            <h4 class="text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
+                        </div>
+                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">Electronics, Luxury Gifts <br> Corporate Gift & Premium Retail</p>
+                    </div>
+
+                    <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                        <p class="w-full text-justify font-bold ">
+                            Rigid boxes are designed for products that require strong protection and refined presentation.
+                            Made from high-density board and finished with premium papers, they offer durability along with an
+                            elegant look and feel.<br /> <br />
+                            We manufacture custom collapsible rigid boxes, providing the same luxury appeal with the
+                            added benefit of space-saving, flat-pack convenience.
+                        </p>
+
+                        <hr class="border border-white/20 my-6">
+
+                        <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Magnetic Closures
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Telescopic & Lift-Off Lids
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Foil Stamping & Embossing
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Custom Sizes & Finishes
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Collapsible Construction
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                
+                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/monocarton.png')] bg-cover bg-center border border-slate-100 h-full">
+                    <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+                        <div>
+                            <h4 class="text-4xl text-center font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
+                        </div>
+                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-center">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                    </div>
+
+                    <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                        <p class="w-full text-justify font-bold">
+                            Monocartons are designed for retail products that require clear branding and structural accuracy.
+                            Crafted from high-quality paperboard, they ensure sharp printing, consistent quality, and dependable protection. 
+                            <br /> <br />
+                            We manufacture custom monocartons engineered for scalable production while maintaining premium visual impact across every unit.
+                        </p>
+
+                        <hr class="border border-white/20 my-6">
+
+                        <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                UV Coating
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Lamination (Matte & Gloss)
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Metallic Effects
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Custom Die-Cut Structures
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                High-Precision Printing
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/paperbag.png')] bg-cover bg-center border border-slate-100 h-full">
+                    <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
+                        <div>
+                            <h4 class="text-4xl text-right font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
+                        </div>
+                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-right">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                    </div>
+
+                    <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
+                        <p class="w-full text-justify font-bold">
+                            Custom paperboard bags are designed for brands that require durability, reusability, and refined retail presentation.
+                            <br /> <br />
+                            Manufactured using strong boards, they feature reinforced handles and bases to ensure structural strength with high brand visibility.
+                            <br /> <br />
+                            We craft premium paperboard bags for electronics, luxury gifts, and retail packaging — engineered for consistent performance at scale.
+                        </p>
+
+                        <hr class="border border-white/20 my-6">
+
+                        <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Rope or Ribbon Handles
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Textured & Specialty Papers
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Multiple Structural Formats
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Reinforced Bases
+                            </li>
+                            <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
+                                Custom Sizes & Printing Finishes
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+</section>
+
     <section id="about" class="bg-[#0c0f14] text-white py-40 px-6 md:px-12 relative overflow-hidden">
         <div class="max-w-[1700px] mx-auto grid lg:grid-cols-2 gap-24 items-center">
             <div class="reveal">
@@ -378,139 +490,7 @@
         </div>
     </section>
 
-    <section id="products" class="h-screen bg-white px-6 md:px-12 flex flex-col py-20 overflow-hidden">
-    <div class="max-w-[1700px] mx-auto w-full h-full flex flex-col">
-        
-        <div class="mb-12 reveal shrink-0">
-            <h2 class="text-xs font-black uppercase tracking-[0.5em] text-orange-600 mb-4">Systems Catalog</h2>
-            <h3 class="text-5xl font-black uppercase tracking-tighter">Structural Lineup</h3>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 gap-8 flex-1 min-h-0 h-full mb-4">
-            
-            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./Rigid_Box_V2.png')] bg-cover bg-center border border-slate-100 h-full">
-                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
-                    <div>
-                        <h4 class="text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
-                    </div>
-                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">Electronics, Luxury Gifts <br> Corporate Gift & Premium Retail</p>
-                </div>
-
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold ">
-                        Rigid boxes are designed for products that require strong protection and refined presentation.
-                        Made from high-density board and finished with premium papers, they offer durability along with an
-                        elegant look and feel.<br /> <br />
-                        We manufacture custom collapsible rigid boxes, providing the same luxury appeal with the
-                        added benefit of space-saving, flat-pack convenience.
-                    </p>
-
-                    <hr class="border border-white/20 my-6">
-
-                    <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Magnetic Closures
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Telescopic & Lift-Off Lids
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Foil Stamping & Embossing
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Custom Sizes & Finishes
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Collapsible Construction
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            
-            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./monocarton.png')] bg-cover bg-center border border-slate-100 h-full">
-                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
-                    <div>
-                        <h4 class="text-4xl text-center font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
-                    </div>
-                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-center">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
-                </div>
-
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold">
-                        Monocartons are designed for retail products that require clear branding and structural accuracy.
-                        Crafted from high-quality paperboard, they ensure sharp printing, consistent quality, and dependable protection. 
-                        <br /> <br />
-                        We manufacture custom monocartons engineered for scalable production while maintaining premium visual impact across every unit.
-                    </p>
-
-                    <hr class="border border-white/20 my-6">
-
-                    <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            UV Coating
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Lamination (Matte & Gloss)
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Metallic Effects
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Custom Die-Cut Structures
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            High-Precision Printing
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./paperbag.png')] bg-cover bg-center border border-slate-100 h-full">
-                <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
-                    <div>
-                        <h4 class="text-4xl text-right font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
-                    </div>
-                    <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-right">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
-                </div>
-
-                <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <p class="mono text-[10px] mb-4 uppercase tracking-widest text-gray-700 font-bold ">// CUSTOM_SPECS</p>
-                    <p class="w-full text-justify font-bold">
-                        Custom paperboard bags are designed for brands that require durability, reusability, and refined retail presentation.
-                        <br /> <br />
-                        Manufactured using strong boards, they feature reinforced handles and bases to ensure structural strength with high brand visibility.
-                        <br /> <br />
-                        We craft premium paperboard bags for electronics, luxury gifts, and retail packaging — engineered for consistent performance at scale.
-                    </p>
-
-                    <hr class="border border-white/20 my-6">
-
-                    <ul class="flex flex-wrap items-center gap-4 text-white font-bold uppercase tracking-wider text-[10px]">
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Rope or Ribbon Handles
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Textured & Specialty Papers
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Multiple Structural Formats
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Reinforced Bases
-                        </li>
-                        <li class="bg-white text-[#FF5733] font-bold px-4 py-2 rounded-full flex items-center shadow-sm hover:bg-orange-700 transition-colors">
-                            Custom Sizes & Printing Finishes
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 
 
     <section id="contact" class="py-40 bg-[#0c0f14] px-6 md:px-12">
@@ -552,127 +532,6 @@
         &copy; 2025 ACESIX PACKAGING | EVOLUTION OF DHARANI PRINTPAK
     </footer>
 
-<script>
-    /* ================================
-    1. Reveal On Scroll
-    ================================ */
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    /* ================================
-    2. Unified Avatar Logic
-    ================================ */
-    const box3d = document.getElementById('box-3d');
-    const pupils = document.querySelectorAll('.pupil');
-    const lids = document.querySelectorAll('.lid');
-    const mouthPath = document.getElementById('mouth-path');
-    const eyeRow = document.getElementById('eye-row');
-    const inquiryBtn = document.getElementById('inquiry-btn');
-
-    // State Variables
-    let currentEmotion = "neutral";
-    const friction = 0.12; 
-    const lookRange = 600; // Distance in px for max rotation
-
-    // Input & Animation Coordinates
-    let targetX = 0, targetY = 0;
-    let curX = 0, curY = 0;
-    let mouseX = 0, mouseY = 0;
-
-    /* --- Emotion System --- */
-    function setEmotion(type) {
-        if (currentEmotion === type) return;
-        currentEmotion = type;
-
-        if (type === "happy") {
-            mouthPath.setAttribute("d", "M15 20 Q50 45 85 20");
-            eyeRow.style.transform = "scaleY(1)";
-        } else {
-            mouthPath.setAttribute("d", "M30 25 Q50 45 70 25 Q50 5 30 25");
-            eyeRow.style.transform = "scaleY(1.2)";
-        }
-    }
-
-    /* --- Input Tracking --- */
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        // 1. Calculate relative look targets
-        const rect = box3d.getBoundingClientRect();
-        const avatarCenterX = rect.left + rect.width / 2;
-        const avatarCenterY = rect.top + rect.height / 2;
-
-        const deltaX = mouseX - avatarCenterX;
-        const deltaY = mouseY - avatarCenterY;
-
-        // 2. Normalize targets (-1 to 1) based on range
-        targetX = Math.max(-1, Math.min(1, deltaX / lookRange));
-        targetY = Math.max(-1, Math.min(1, deltaY / lookRange));
-
-        // 3. Proximity Logic for Emotion
-        const btnRect = inquiryBtn.getBoundingClientRect();
-        const btnCenterX = btnRect.left + btnRect.width / 2;
-        const btnCenterY = btnRect.top + btnRect.height / 2;
-
-        const dist = Math.sqrt(
-            Math.pow(mouseX - btnCenterX, 2) +
-            Math.pow(mouseY - btnCenterY, 2)
-        );
-
-        if (dist < 400) { // Closer threshold for more responsive feel
-            setEmotion("happy");
-        } else {
-            setEmotion("default");
-        }
-    });
-
-    /* --- Main Animation Loop --- */
-    function animate() {
-        // Interpolation (Smoothing)
-        curX += (targetX - curX) * friction;
-        curY += (targetY - curY) * friction;
-
-        // Apply Box Rotation (Higher multiplier for depth)
-        box3d.style.transform = `
-            rotateY(${curX * 25}deg) 
-            rotateX(${-curY * 25}deg)
-        `;
-
-        // Apply Pupil Parallax (Different multiplier for depth illusion)
-        pupils.forEach(pupil => {
-            pupil.style.transform = `
-                translate(${curX * 14}px, ${curY * 14}px)
-            `;
-        });
-
-        requestAnimationFrame(animate);
-    }
-
-    // Start the loop
-    animate();
-
-    /* --- Random Blinking --- */
-    function blink() {
-        lids.forEach(lid => lid.style.transform = 'translateY(0%)');
-        setTimeout(() => {
-            lids.forEach(lid => lid.style.transform = 'translateY(-100%)');
-        }, 120);
-        setTimeout(blink, Math.random() * 4000 + 2500);
-    }
-
-    blink();
-
-    // Initial Mouth Style
-    mouthPath.setAttribute("fill", "#0f172a");
-    mouthPath.setAttribute("stroke", "none");
-</script>
+<script src="./scripts/index.js"></script>
 </body>
 </html>
