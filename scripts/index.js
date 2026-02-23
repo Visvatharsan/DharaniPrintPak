@@ -258,3 +258,30 @@ window.addEventListener("load", () => {
 // Call after DOM is loaded
 window.addEventListener('load', initInfiniteCarousel);
 });
+
+
+
+
+const cube = document.querySelector('#cursor-cube');
+let mouseX = 0, mouseY = 0;
+let cubeX = 0, cubeY = 0;
+
+window.addEventListener('mousemove', (e) => {
+    // Use pageX/pageY so scroll position is respected
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+
+    cube.style.opacity = "1";
+});
+
+function animate() {
+    cubeX += (mouseX - cubeX) * 0.1;
+    cubeY += (mouseY - cubeY) * 0.1;
+
+    // Subtract half cube size (10px) so it centers on cursor
+    cube.style.transform = `translate3d(${cubeX - 10}px, ${cubeY - 10}px, 0)`;
+
+    requestAnimationFrame(animate);
+}
+
+animate();
