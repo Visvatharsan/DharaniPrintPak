@@ -194,94 +194,160 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    // Tailwind config
-tailwind.config = {
-    theme: {
-        extend: {
-            animation: {
-                'carousel-scroll': 'carousel-scroll 30s linear infinite',
-            },
-            keyframes: {
-                'carousel-scroll': {
-                    from: { transform: 'translateX(0)' },
-                    to:   { transform: 'translateX(-50%)' }, // -50% because we duplicate the list
+    // Tailwind config gallery
+    tailwind.config = {
+        theme: {
+            extend: {
+                animation: {
+                    'carousel-scroll': 'carousel-scroll 30s linear infinite',
+                    'carousel-scroll-logo': 'carousel-scroll-logo 60s linear infinite',
+                },
+                keyframes: {
+                    'carousel-scroll': {
+                        from: { transform: 'translateX(0)' },
+                        to:   { transform: 'translateX(-50%)' },
+                    },
+                    'carousel-scroll-logo': {
+                        from: { transform: 'translateX(0)' },
+                        to:   { transform: 'translateX(-50%)' },
+                    }
                 }
             }
         }
     }
-}
 
-const showcaseItems = [
-    { image: "./resources/structuralArchieve/one.jpeg", category: "RIGID SYSTEM",  title: "Luxury Electronics Packaging" },
-    { image: "./resources/structuralArchieve/two.jpeg", category: "MONOCARTON",    title: "Retail Precision Cartons" },
-    { image: "./resources/structuralArchieve/three.jpeg", category: "PAPERBOARD",    title: "Premium Retail Bags" },
-    { image: "./resources/structuralArchieve/six.jpeg", category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
-    { image: "./resources/structuralArchieve/five.jpeg", category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
-    { image: "./resources/structuralArchieve/seven.jpeg", category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
-];
 
-window.addEventListener("load", () => {
-    const track = document.getElementById("carousel-track");
-    if (!track) return;
 
-    function buildCards() {
-        return showcaseItems.map(item => {
-            const li = document.createElement("li");
-            li.className = "flex-shrink-0 w-[520px] border border-white/10 flex flex-col group cursor-pointer";
-            li.innerHTML = `
-                <img src="${item.image}" class="h-[420px] object-cover w-full transition-transform duration-700 group-hover:scale-[1.03]" />
-                <div class="p-8 border-t border-white/10 bg-[#0b0f14]">
-                    <p class="text-[10px] font-black uppercase tracking-[0.5em] text-orange-500 mb-4">${item.category}</p>
-                    <h3 class="text-2xl font-black uppercase">${item.title}</h3>
-                </div>
-            `;
-            return li;
+    function initInfiniteCarousel() {
+        const showcaseItems = [
+            { image: "./resources/structuralArchieve/one.jpeg",   category: "RIGID SYSTEM",  title: "Luxury Electronics Packaging" },
+            { image: "./resources/structuralArchieve/two.jpeg",   category: "MONOCARTON",    title: "Retail Precision Cartons" },
+            { image: "./resources/structuralArchieve/three.jpeg", category: "PAPERBOARD",    title: "Premium Retail Bags" },
+            { image: "./resources/structuralArchieve/six.jpeg",   category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
+            { image: "./resources/structuralArchieve/five.jpeg",  category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
+            { image: "./resources/structuralArchieve/seven.jpeg", category: "COLLAPSIBLE",   title: "Space Efficient Rigid Box" },
+        ];
+
+        const track = document.getElementById("carousel-track");
+        if (!track) return;
+
+        function buildCards() {
+            return showcaseItems.map(item => {
+                const li = document.createElement("li");
+                li.className = "flex-shrink-0 w-[520px] border border-white/10 flex flex-col group cursor-pointer";
+                li.innerHTML = `
+                    <img src="${item.image}" class="h-[420px] object-cover w-full transition-transform duration-700 group-hover:scale-[1.03]" />
+                    <div class="p-8 border-t border-white/10 bg-[#0b0f14]">
+                        <p class="text-[10px] font-black uppercase tracking-[0.5em] text-orange-500 mb-4">${item.category}</p>
+                        <h3 class="text-2xl font-black uppercase">${item.title}</h3>
+                    </div>
+                `;
+                return li;
+            });
+        }
+
+        buildCards().forEach(card => track.appendChild(card));
+
+        buildCards().forEach(card => {
+            card.setAttribute("aria-hidden", "true");
+            track.appendChild(card);
+        });
+
+        track.addEventListener("mouseenter", () => track.style.animationPlayState = "paused");
+        track.addEventListener("mouseleave", () => track.style.animationPlayState = "running");
+    }
+
+    window.addEventListener("load", initInfiniteCarousel);
+
+
+    const cube = document.querySelector('#cursor-cube');
+    let mouseX_Cube = 0, mouseY_Cube = 0;
+    let cubeX = 0, cubeY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+        // Use pageX/pageY so scroll position is respected
+        mouseX_Cube = e.pageX;
+        mouseY_Cube = e.pageY;
+
+        cube.style.opacity = "1";
+    });
+
+    function animateCursor() {
+        cubeX += (mouseX_Cube - cubeX) * 0.1;
+        cubeY += (mouseY_Cube - cubeY) * 0.1;
+
+        // Subtract half cube size (10px) so it centers on cursor
+        cube.style.transform = `translate3d(${cubeX - 10}px, ${cubeY - 10}px, 0)`;
+
+        requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+
+
+    //logo
+    
+    
+    function initLogoGrid() {
+        const brandLogos = [
+            './resources/dpp/Pothys.svg',
+            './resources/dpp/Ranka.svg',
+            './resources/dpp/Rokde.svg',
+            './resources/dpp/sareen.svg',
+            './resources/dpp/SIlverpark21.svg',
+            './resources/dpp/AB.svg',
+            './resources/dpp/Abak.svg',
+            './resources/dpp/Arjuna.svg',
+            './resources/dpp/Bhima.svg',
+            './resources/dpp/CH.svg',
+            './resources/dpp/Gandevikar.svg',
+            './resources/dpp/Grt.svg',
+            './resources/dpp/hindi.svg',
+            './resources/dpp/Karthik.svg',
+            './resources/dpp/KHIMJI.svg',
+            './resources/dpp/M&M.svg',
+            './resources/dpp/Madhavan.svg',
+            './resources/dpp/navrathan.svg',
+            './resources/dpp/Popular.svg',
+            './resources/dpp/sukra.svg',
+            './resources/dpp/Tamil logo.svg',
+            './resources/dpp/Thattukadai.svg',
+            './resources/dpp/Vadnerkar.svg',
+            './resources/dpp/Voice of silver.svg',
+            './resources/dpp/Skandhaa.svg',
+            './resources/dpp/Sri baalagi.svg',
+            './resources/dpp/Sri krishna.svg',
+            './resources/dpp/sri swarna.svg'
+        ];
+
+        const track = document.getElementById('logo-track');
+        if (!track) return;
+
+        function buildLogos() {
+            return brandLogos.map(src => {
+                const li = document.createElement('li');
+                li.className =
+                    'flex-shrink-0 h-64 bg-[#f4f4f4] border border-white/5 flex items-center justify-center p-0 m-0';
+
+                li.innerHTML = `
+                    <img src="${src}" 
+                        class="border-l w-full h-full object-contain hover:opacity-100 transition-opacity duration-300" />
+                `;
+                return li;
+            });
+        }
+
+        buildLogos().forEach(li => track.appendChild(li));
+        buildLogos().forEach(li => {
+            li.setAttribute('aria-hidden', 'true');
+            track.appendChild(li);
+        });
+
+        track.addEventListener('mouseleave', () => {
+            track.style.animationPlayState = 'running';
         });
     }
 
-    // Build original set
-    buildCards().forEach(card => track.appendChild(card));
-
-    // Duplicate for seamless loop — same trick as the logo scroller
-    buildCards().forEach(card => {
-        card.setAttribute("aria-hidden", "true");
-        track.appendChild(card);
-    });
-
-    // Pause on hover
-    track.addEventListener("mouseenter", () => track.style.animationPlayState = "paused");
-    track.addEventListener("mouseleave", () => track.style.animationPlayState = "running");
+    window.addEventListener('load', initLogoGrid);
 });
-
-
-
-// Call after DOM is loaded
-window.addEventListener('load', initInfiniteCarousel);
-});
-
-
-
-
-const cube = document.querySelector('#cursor-cube');
-let mouseX = 0, mouseY = 0;
-let cubeX = 0, cubeY = 0;
-
-window.addEventListener('mousemove', (e) => {
-    // Use pageX/pageY so scroll position is respected
-    mouseX = e.pageX;
-    mouseY = e.pageY;
-
-    cube.style.opacity = "1";
-});
-
-function animate() {
-    cubeX += (mouseX - cubeX) * 0.1;
-    cubeY += (mouseY - cubeY) * 0.1;
-
-    // Subtract half cube size (10px) so it centers on cursor
-    cube.style.transform = `translate3d(${cubeX - 10}px, ${cubeY - 10}px, 0)`;
-
-    requestAnimationFrame(animate);
-}
-
-animate();

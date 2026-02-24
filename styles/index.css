@@ -31,7 +31,6 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
                 background-color 0.3s ease, 
                 border 0.3s ease;
     
-    animation: ring-pulse 2s infinite;
     position: relative;
     z-index: 1;
 }
@@ -46,6 +45,20 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
     animation: pulseScale 2s infinite;
 }
 
+
+.btn-action:hover {
+
+    transform: scale(1.1) rotate(90deg);
+    border: #FF5733 4px solid;
+    background-color: #ffffff; /* Optional: high contrast hover */
+}
+
+.btn-action:hover::after{
+    animation: none !important;
+    box-shadow: none !important;
+    
+}
+
 @keyframes pulseScale {
     0% {
         transform: scale(1);
@@ -56,18 +69,6 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
         opacity: 0;
     }
 }
-
-.btn-action:hover {
-    animation: none !important;
-    box-shadow: none !important;
-
-    transform: scale(1.1) rotate(90deg);
-    border: #FF5733 4px solid;
-    background-color: #ffffff; /* Optional: high contrast hover */
-}
-
-
-.btn-action:hover { transform: scale(1.1) rotate(90deg); border: #FF5733 4px solid; }
 
 /* Structural Glass Effect */
 .glass-panel {
@@ -178,6 +179,10 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
     overflow: hidden;   /* THIS creates cinematic crop */
     position: relative;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     transform: translate(-15%, -10%);
 }
 
@@ -211,6 +216,7 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 .map-3d {
     width: 130%;
     aspect-ratio: 5 / 3;
+    min-height: 250px;
 
     will-change: transform;
     backface-visibility: hidden;
@@ -280,7 +286,11 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+    .map-scene{
+        display: none;
+    }
+
     .map-3d {
         animation: none;
         transform: translate(-50%, -50%) rotateX(60deg) rotateZ(20deg);
@@ -407,4 +417,50 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 @keyframes rotateCube {
     from { transform: rotateX(0deg) rotateY(0deg); }
     to { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+
+
+
+
+
+
+
+.partners {
+    max-width: 1400px;
+    margin: auto;
+}
+
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.logo-cell {
+    height: 100%;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    color: white;
+}
+
+.logo-cell svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-logo-scroll {
+  animation: logo-scroll 40s linear infinite;
 }
