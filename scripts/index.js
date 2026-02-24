@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
             './resources/dpp/Arjuna.svg',
             './resources/dpp/Bhima.svg',
             './resources/dpp/CH.svg',
-            './resources/dpp/Gandevikar.svg',
+            './resources/dpp/GANDVEDIKAR.svg',
             './resources/dpp/Grt.svg',
             './resources/dpp/hindi.svg',
             './resources/dpp/Karthik.svg',
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function () {
             './resources/dpp/Vadnerkar.svg',
             './resources/dpp/Voice of silver.svg',
             './resources/dpp/Skandhaa.svg',
-            './resources/dpp/Sri baalagi.svg',
+            './resources/dpp/Sribalaji.svg',
             './resources/dpp/Sri krishna.svg',
             './resources/dpp/sri swarna.svg'
         ];
@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 li.innerHTML = `
                     <img src="${src}" 
-                        class="border-l w-full h-full object-contain hover:opacity-100 transition-opacity duration-300" />
+                        class="border-l-2 w-full h-full object-contain hover:opacity-100 transition-opacity duration-300" />
                 `;
                 return li;
             });
