@@ -206,26 +206,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Tailwind config gallery
-    tailwind.config = {
-        theme: {
-            extend: {
-                animation: {
-                    'carousel-scroll': 'carousel-scroll 30s linear infinite',
-                    'carousel-scroll-logo': 'carousel-scroll-logo 60s linear infinite',
-                },
-                keyframes: {
-                    'carousel-scroll': {
-                        from: { transform: 'translateX(0)' },
-                        to:   { transform: 'translateX(-50%)' },
-                    },
-                    'carousel-scroll-logo': {
-                        from: { transform: 'translateX(0)' },
-                        to:   { transform: 'translateX(-50%)' },
-                    }
-                }
-            }
-        }
-    }
+    // tailwind.config = {
+    //     theme: {
+    //         extend: {
+    //             animation: {
+    //                 'carousel-scroll': 'carousel-scroll 30s linear infinite',
+    //                 'carousel-scroll-logo': 'carousel-scroll-logo 60s linear infinite',
+    //             },
+    //             keyframes: {
+    //                 'carousel-scroll': {
+    //                     from: { transform: 'translateX(0)' },
+    //                     to:   { transform: 'translateX(-50%)' },
+    //                 },
+    //                 'carousel-scroll-logo': {
+    //                     from: { transform: 'translateX(0)' },
+    //                     to:   { transform: 'translateX(-50%)' },
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
 
 

@@ -96,6 +96,18 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 }
 
 
+#gallery-card-rigid-box{
+    background-image: url('../resources/rigidbox.png');
+}
+
+#gallery-card-mono-box{
+    background-image: url('../resources/mono_carton.png');
+}
+
+#gallery-card-paperboard{
+    background-image: url('../resources/paperboard_bags.png');
+}
+
 #box-3d {
     transform-style: preserve-3d;
     will-change: transform;

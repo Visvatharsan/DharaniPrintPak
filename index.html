@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles/index.css">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/css/intlTelInput.css">
+    <link rel="stylesheet" href="./dist/output.css">
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/intlTelInput.min.js"></script>
 
 
@@ -456,7 +457,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 gap-8 flex-1 min-h-0 h-full mb-4">
                 
-                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/rigidbox.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-rigid-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-cover bg-center border border-slate-100 h-full">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
                             <h4 class="text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
@@ -495,7 +496,7 @@
                 </div>
 
                 
-                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/mono_carton.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-mono-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/mono_carton.png')] bg-cover bg-center border border-slate-100 h-full">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
                             <h4 class="text-4xl text-center font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
@@ -534,7 +535,7 @@
                     </div>
                 </div>
 
-                <div class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/paperboard_bags.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-paperboard" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/paperboard_bags.png')] bg-cover bg-center border border-slate-100 h-full">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
                             <h4 class="text-4xl text-right font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
