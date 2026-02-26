@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -c ./tailwind.config.js -i ./src/input.css -o ./dist/output.css --minify"
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Abhijith-Shaju/Dharani_Printpak#readme",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.2.1"
