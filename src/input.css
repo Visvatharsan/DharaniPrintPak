@@ -2,7 +2,7 @@
 
 @theme {
   --animate-carousel-scroll: carousel-scroll 30s linear infinite;
-  --animate-carousel-scroll-logo: carousel-scroll-logo 60s linear infinite;
+  --animate-carousel-scroll-logo: carousel-scroll-logo 90s linear infinite;
 
   @keyframes carousel-scroll {
     from { transform: translateX(0); }

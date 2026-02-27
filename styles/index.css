@@ -88,8 +88,14 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 /* Gallery Drawer */
 .gallery-card .drawer {
     transform: translateX(-100%);
+    /* background-color: rgba(255, 87, 51, 0.4); */
+    background-color: #FF5733; 
+
+    /* background-color: #E94F37; */
 }
-.gallery-card:hover .drawer { transform: translateX(0); }
+.gallery-card:hover .drawer { 
+    transform: translateX(0); 
+}
 
 .calligraphy-text {
     font-family: 'Great Vibes', cursive;
@@ -383,12 +389,13 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 }
 
 #carousel-track {
+    /* cursor:none; */
     scrollbar-width: thin;
     scrollbar-color: rgba(255,255,255,0.2) transparent;
 }
 
 .active-filter {
-    background: #f97316;
+    background: #FF5733;
     color: black;
 }
 
@@ -480,13 +487,4 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 
 .animate-logo-scroll {
   animation: logo-scroll 40s linear infinite;
-}
-
-
-.logo-card-border-left{
-    border-left: 1px solid rgba(0,0,0,0.1);
-}
-
-.border-logo-top{
-    border-top: 1px solid rgba(0,0,0,0.1);
 }

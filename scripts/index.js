@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const createCards = (items) => {
                 return items.map(item => {
                     const li = document.createElement("li");
-                    li.className = "flex-shrink-0 w-[520px] border border-white/10 flex flex-col group cursor-pointer";
+                    li.className = "flex-shrink-0 w-[520px] border border-white/10 flex flex-col group";
                     li.innerHTML = `
                         <img src="${item.image}" class="h-[420px] object-cover w-full transition-transform duration-700 group-hover:scale-[1.03]" />
                         <div class="p-8 border-t border-white/10 bg-[#0b0f14]">
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 li.innerHTML = `
                     <img src="${src}" 
-                        class="logo-card-border-left w-full h-full object-contain hover:opacity-100 transition-opacity duration-300" />
+                        class="w-full h-full object-contain hover:opacity-100 transition-opacity duration-300" />
                 `;
                 return li;
             });
