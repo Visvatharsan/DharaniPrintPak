@@ -1,17 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap');
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
         transition: none !important;
     }
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono&display=swap');
         
 body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #000000; overflow-x: hidden;}
 .mono { font-family: 'JetBrains Mono', monospace; }
 
 /* Asymmetrical Typography */
-.hero-title { font-size: clamp(2rem, 6vw, 8rem); line-height: 0.8; letter-spacing: -0.05em; }
+.hero-title { font-size: clamp(2.8rem, 4.5vw, 6.5rem); line-height: 0.85; letter-spacing: -0.05em; }
 
 /* Reveal Animations */
 .reveal { opacity: 0; transform: translateY(30px); transition: transform 0.6s ease, opacity 0.6s ease; }
@@ -77,7 +77,11 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
     background: rgba(255,255,255,0.75);
     border: 1px solid rgba(0,0,0,0.06);
     box-shadow: 0 40px 100px rgba(0,0,0,0.08);
+    width: clamp(300px, 22vw, 500px);
+    height: clamp(300px, 22vw, 500px);
 }
+
+
 
 @media (min-width: 1024px) {
     .glass-panel {
@@ -487,4 +491,49 @@ body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #0000
 
 .animate-logo-scroll {
   animation: logo-scroll 40s linear infinite;
+}
+
+@media (min-width: 1600px) {
+  #hero .max-w-\[1700px\] {
+    max-width: 1500px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+    /* Lock hero container width */
+    #hero .max-w-\[1700px\] {
+        max-width: 1600px;
+    }
+
+    /* Lock title size */
+    .hero-title {
+        font-size: 110px;
+        line-height: 0.85;
+    }
+
+    /* Lock glass panel size */
+    .glass-panel {
+        width: 500px;
+        height: 500px;
+    }
+
+    /* Lock spacing under hero */
+    #hero {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+
+}
+
+@media (min-width: 1280px) {
+  #why-choose-us .max-w-\[1700px\] {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1600px) {
+  #why-choose-us .max-w-\[1700px\] {
+    max-width: 1300px;
+  }
 }

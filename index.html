@@ -61,15 +61,13 @@
     </svg>
 
     
-    <section id="hero" class="min-h-screen max-h-screen flex flex-col justify-between px-6 md:px-12 relative overflow-hidden bg-[#f4f4f4]">
+    <section id="hero" class="min-h-screen flex flex-col justify-between px-0 relative overflow-hidden bg-[#f4f4f4]">
 
-        <nav class="top-0 left-0 w-full z-[100] mt-4 p-6 md:px-7 md:py-4 flex justify-between items-center pointer-events-none duration-300"  id="navbar">
-            <div class="pointer-events-auto px-4 py-3 flex justify-center items-center">
+        <nav class="top-0 left-0 w-full z-[100] mt-4 pr-6 pl-0 md:pr-7 md:pl-0 py-4 flex justify-between items-center pointer-events-none duration-300" id="navbar">
+            <div class="pointer-events-auto py-3 flex items-center">
                 <svg class="logo h-20 w-auto transition-colors duration-300" viewBox="0 0 500 500">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            width="100%" viewBox="0 0 432 448" enable-background="new 0 0 432 448" xml:space="preserve">
-                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" 
-                            d="
+                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="100%" viewBox="0 0 432 448" enable-background="new 0 0 432 448" xml:space="preserve">
+                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" d="
                         M377.917786,228.000000 
                             C377.917725,200.200394 377.917725,172.900803 377.917725,145.899475 
                             C375.944733,144.746506 374.820343,145.772415 373.703735,146.332825 
@@ -110,9 +108,8 @@
                             C294.289764,343.672577 333.640869,319.887512 373.092010,296.269470 
                             C376.695190,294.112396 378.024963,291.672241 377.982361,287.486206 
                             C377.782135,267.825958 377.908234,248.162384 377.917786,228.000000 
-                        z"/>
-                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" 
-                            d="
+                        z"></path>
+                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" d="
                         M69.121765,121.748901 
                             C116.410423,145.311996 163.299332,168.844833 210.379807,191.987885 
                             C216.490402,194.991653 218.612991,198.387756 218.499680,205.211960 
@@ -153,9 +150,8 @@
                             C49.678703,239.638275 49.650589,178.988724 49.666695,118.339188 
                             C49.667130,116.703323 49.372200,115.003166 50.743820,112.645691 
                             C56.708576,115.605995 62.744999,118.601868 69.121765,121.748901 
-                        z"/>
-                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" 
-                            d="
+                        z"></path>
+                        <path fill="currentColor" opacity="1.000000" stroke="currentColor" d="
                         M253.929504,49.935452 
                             C298.981445,67.767464 343.674744,85.458717 388.203644,103.084915 
                             C388.135284,105.698761 386.402496,105.912010 385.143005,106.522827 
@@ -193,10 +189,10 @@
                             C176.402512,89.867958 195.277130,98.185677 214.087967,106.645248 
                             C217.032867,107.969620 219.502884,107.340736 222.162109,106.119614 
                             C234.861038,100.288300 247.584442,94.510262 260.990173,88.406303 
-                        z"/>
+                        z"></path>
                     </svg>
                 </svg>
-                <div class="ml-4 text-[24px] font-bold uppercase tracking-[0.2em] text-center leading-5"> Dharani <br /> <span class="text-[12px] opacity-40"> Printpak </span> </div>
+                <div class="ml-4 text-[24px] font-bold uppercase tracking-[0.2em] text-center leading-5"> Dharani <br> <span class="text-[12px] opacity-40"> Printpak </span> </div>
             </div>
             <div class="hidden lg:flex pointer-events-auto bg-black text-white px-8 py-4 rounded-full space-x-8 text-[10px] font-black uppercase tracking-widest shadow-2xl" id="nav-menu">
                 <a href="#products" class="hover:text-orange-500 transition">Systems</a>
@@ -208,15 +204,15 @@
             </div>
         </nav>
         
-        <div class="absolute -left-20 top-1/2 -translate-y-1/2 text-[30vw] font-black text-black/[0.02] select-none leading-none pointer-events-none tracking-tighter antialiased">
+        <div class="absolute -left-20 top-1/2 -translate-y-1/2 text-[30vw] font-black text-black/[0.02] select-none leading-none pointer-events-none">
             1994
         </div>
 
-        <div class="max-w-[1700px] mx-auto w-full relative">
+        <div class="w-full relative">
             
-            <div class="reveal active relative z-30 mb-[-1vw]">
+            <div class="reveal active relative z-30 mb-[-40px]">
                 <h1 class="wobbleText hero-title font-black uppercase">
-                    BOX AS <i>NICE</i> <span class="text-orange-500">&RightArrow;</span>
+                    BOX AS <i>NICE</i> <span class="text-orange-500">→</span>
                 </h1>
             </div>
 
@@ -225,18 +221,13 @@
 
                     <div class="flex items-center justify-center p-20">
                         <!-- Shadow -->
-                        <div id="ground-shadow"
-                            class="absolute -bottom-20 w-60 h-20 bg-black/30 blur-3xl rounded-full transition-transform duration-100"
-                            style="transform: translateZ(-200px);">
+                        <div id="ground-shadow" class="absolute -bottom-20 w-60 h-20 bg-black/30 blur-3xl rounded-full transition-transform duration-100" style="transform: translateX(0.866667px); opacity: 0.3;">
                         </div>   
-                        <div id="box-3d" 
-                            class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out"
-                            style="transform-style: preserve-3d;">
+                        <div id="box-3d" class="relative w-40 h-40 md:w-60 md:h-60 transition-transform duration-150 ease-out" style="transform-style: preserve-3d; transform: rotateY(-0.476667deg) rotateX(-5.59339deg);">
                             
 
                             <!-- FRONT -->
-                            <div class="cube-face absolute inset-0 bg-gradient-to-br from-white via-white to-slate-200 flex flex-col items-center justify-center shadow-xl"
-                                style="transform: translateZ(120px) scale(1.01);">
+                            <div class="cube-face absolute inset-0 bg-gradient-to-br from-white via-white to-slate-200 flex flex-col items-center justify-center shadow-xl" style="transform: translateZ(120px) scale(1.01);">
 
                                 <!-- Tape -->
                                 <div class="absolute top-4 left-6 flex space-x-1 opacity-80">
@@ -246,21 +237,21 @@
                                 </div>
 
                                 <!-- Eyes -->
-                                <div id="eye-row" class="flex space-x-12 mb-6 transition-transform duration-300">
+                                <div id="eye-row" class="flex space-x-12 mb-6 transition-transform duration-300" style="transform: scaleY(1);">
                                     <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-white shadow-inner shadow-black/40">
-                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5"></div>
-                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5" style="transform: translate(-0.303333px, 3.55943px);"></div>
+                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full" style="transform: translateY(-100%);"></div>
                                     </div>
                                     <div class="eye w-10 h-10 bg-slate-900 rounded-full relative overflow-hidden border-2 border-white shadow-inner shadow-black/40">
-                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5"></div>
-                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full"></div>
+                                        <div class="pupil absolute w-4 h-4 bg-white rounded-full top-1.5 left-1.5" style="transform: translate(-0.303333px, 3.55943px);"></div>
+                                        <div class="lid absolute inset-0 bg-slate-50 transition-all duration-100 -translate-y-full" style="transform: translateY(-100%);"></div>
                                     </div>
                                 </div>
 
                                 <!-- Mouth -->
                                 <div id="mouth-wrapper" class="relative w-16 h-10 flex items-center justify-center">
                                     <svg id="mouth-svg" viewBox="0 0 100 50" class="w-full h-full">
-                                        <path id="mouth-path" d="M15 20 Q50 45 85 20" fill="#0f172a" />
+                                        <path id="mouth-path" d="M15 20 Q50 45 85 20" fill="#0f172a"></path>
                                     </svg>
                                 </div>
 
@@ -272,20 +263,16 @@
                             </div>
 
                             <!-- RIGHT -->
-                            <div class="cube-face absolute inset-0 bg-slate-300"
-                                style="transform: rotateY(90deg) translateZ(120px) scale(1.01);"></div>
+                            <div class="cube-face absolute inset-0 bg-slate-300" style="transform: rotateY(90deg) translateZ(120px) scale(1.01);"></div>
 
                             <!-- LEFT -->
-                            <div class="cube-face absolute inset-0 bg-slate-200"
-                                style="transform: rotateY(-90deg) translateZ(120px) scale(1.01);"></div>
+                            <div class="cube-face absolute inset-0 bg-slate-200" style="transform: rotateY(-90deg) translateZ(120px) scale(1.01);"></div>
 
                             <!-- TOP -->
-                            <div class="cube-face absolute inset-0 bg-slate-200"
-                                style="transform: rotateX(90deg) translateZ(120px) scale(1.01);"></div>
+                            <div class="cube-face absolute inset-0 bg-slate-200" style="transform: rotateX(90deg) translateZ(120px) scale(1.01);"></div>
 
                             <!-- BOTTOM -->
-                            <div class="cube-face absolute inset-0 bg-slate-300"
-                                style="transform: rotateX(-90deg) translateZ(120px) scale(1.01);"></div>
+                            <div class="cube-face absolute inset-0 bg-slate-300" style="transform: rotateX(-90deg) translateZ(120px) scale(1.01);"></div>
 
                         </div>
                     </div>
@@ -293,11 +280,7 @@
                     <div class="absolute -bottom-10 -left-10 pointer-events-auto">
                         <a href="#products" class="btn-action text-white hover:text-[#FF5733] hover:bg-[#fafafa]/40">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path 
-                                    stroke-linecap="round" 
-                                    stroke-linejoin="round" 
-                                    stroke-width="3" 
-                                    d="M5 12h14m0 0l-7-7m7 7l-7 7">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 12h14m0 0l-7-7m7 7l-7 7">
                                 </path>
                             </svg>
                         </a>
@@ -305,27 +288,24 @@
                 </div>
             </div>
 
-            <div class="reveal active relative flex flex-row justify-between items-end mt-[-4vw] text-right">
+            <div class="reveal active relative flex flex-row justify-between items-end mt-[-100px] text-right">
                 <div class="max-w-xs relative group flex flex-col items-start">
                     
                     <p class="text-[10px] font-black uppercase tracking-[0.3em] text-orange-600 mb-4">// PRODUCTION_HUB_SIVAKASI</p> 
                     <p class="text-xs text-left font-semibold leading-relaxed text-slate-500 mb-6">Experience refined presentation for products requiring functional strength and visual elegance.</p>
-                    <a href="#contact" id="inquiry-btn" class="group relative overflow-hidden inline-block px-10 py-3 bg-black text-white font-black text-[12px] uppercase tracking-[0.4em] hover:text-white transition-all duration-500 shadow-xl">
-                        <span class="relative z-10">Partner With Us <span class="text-lg">+</span></span>
-                        
-                        <div class="absolute inset-0 bg-orange-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
+                    <a href="#contact" id="inquiry-btn" class="inline-block px-10 py-3 h-min bg-black text-white font-black text-[12px] uppercase tracking-[0.4em] hover:bg-orange-600 transition-all duration-500 shadow-xl">
+                            Partner With Us <span class="text-lg"> + </span>
                     </a>
-
                     
                 </div>
                 
                 <h1 class="wobbleText hero-title font-black uppercase">
-                    AS YOUR <br />
+                    AS YOUR <br>
                     PRODUCT<span class="text-orange-600">*</span>
                 </h1> 
             </div>
             
-            <div class="max-w-[1700px] mx-auto w-full mt-12 mb-8 flex md:flex-row justify-start items-center border-t border-slate-100 pt-10 reveal active">
+            <div class="w-full mt-12 mb-8 flex md:flex-row justify-start items-center border-t border-slate-100 pt-10 reveal active">
                 <div class="text-left">
                     <p class="mono text-5xl font-black tracking-tighter">SINCE'94</p>
                     <p class="text-[9px] font-black uppercase tracking-[0.5em] opacity-30 mt-2 italic">Dharani Printpak Heritage</p>
@@ -338,12 +318,12 @@
         <div class="max-w-[1700px] mx-auto">
 
             <!-- Section Header -->
-            <div class="flex flex-row justify-between">
+            <div class="flex flex-col md:flex-row gap-10 xl:gap-20 items-start">
                 <div class="mb-20 max-w-3xl reveal">
                     <h2 class="text-xs font-black uppercase tracking-[0.6em] text-orange-500 mb-6">
                         / Why DHARANI PRINTPAK
                     </h2>
-                    <h3 class="text-5xl md:text-7xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
+                    <h3 class="text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
                         A Packaging Partner <br> You Can Rely On
                     </h3>
                     <p class="text-slate-400 text-xl font-medium leading-relaxed">
@@ -352,11 +332,11 @@
                     </p>
                 </div>
 
-                <div class="flex items-center space-x-16 md:space-x-24 text-white reveal active" style="transition-delay: 200ms;">
+                <div class="flex items-start space-x-12 md:space-x-20 mt-12 md:mt-0 text-white reveal active" style="transition-delay: 200ms;">
                     <div class="group relative">
                         <span class="absolute -top-8 -left-4 text-8xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-orange-500/10 transition-colors duration-500">30</span>
                         
-                        <p class="text-6xl md:text-8xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">30<span class="text-orange-500 group-hover:text-white">+</span></p>
+                        <p class="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">30<span class="text-orange-500 group-hover:text-white">+</span></p>
                         <div class="mt-2 flex items-center space-x-2">
                             <div class="w-8 h-[2px] bg-orange-500"></div>
                             <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Years Expert</p>
@@ -366,7 +346,7 @@
                     <div class="group relative">
                         <span class="absolute -top-8 -left-4 text-8xl font-black text-white/[0.03] select-none pointer-events-none group-hover:text-orange-500/10 transition-colors duration-500">100</span>
                         
-                        <p class="text-6xl md:text-8xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">100<span class="text-orange-500 group-hover:text-white">+</span></p>
+                        <p class="text-5xl md:text-7xl xl:text-8xl 2xl:text-9xl font-black tracking-tighter group-hover:text-orange-500 transition-colors duration-500">100<span class="text-orange-500 group-hover:text-white">+</span></p>
                         <div class="mt-2 flex items-center space-x-2">
                             <div class="w-8 h-[2px] bg-orange-500"></div>
                             <p class="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400">Trusted Brands</p>
@@ -377,14 +357,14 @@
             </div>
 
             <!-- 4 Core Pillars -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8 xl:gap-12">
 
                 <!-- Experience -->
                 <div class="group border border-white/5 p-10 bg-white/[0.02] hover:bg-orange-600 transition-all duration-500 reveal">
                     <p class="text-[12px] font-black uppercase tracking-widest text-orange-500 group-hover:text-white mb-6">
                         01 / Manufacturing Experience
                     </p>
-                    <h4 class="text-2xl font-black uppercase mb-6">
+                    <h4 class="text-2xl font-black uppercase mb-6 min-h-[64px]">
                         Built on Production Knowledge
                     </h4>
                     <p class="text-slate-400 text-md leading-relaxed group-hover:text-white/90">
@@ -400,7 +380,7 @@
                     <p class="text-[10px] font-black uppercase tracking-widest text-orange-500 group-hover:text-white mb-6">
                         02 / Sivakasi Advantage
                     </p>
-                    <h4 class="text-2xl font-black uppercase mb-6">
+                    <h4 class="text-2xl font-black uppercase mb-6 min-h-[64px]">
                         Strategic Production Hub
                     </h4>
                     <p class="text-slate-400 text-md leading-relaxed group-hover:text-white/90">
@@ -415,7 +395,8 @@
                     <p class="text-[10px] font-black uppercase tracking-widest text-orange-500 group-hover:text-white mb-6">
                         03 / Customized Solutions
                     </p>
-                    <h4 class="text-2xl font-black uppercase mb-6">
+                    
+                    <h4 class="text-2xl font-black uppercase mb-6 min-h-[64px]">
                         Engineered for Every Product
                     </h4>
                     <p class="text-slate-400 text-md leading-relaxed group-hover:text-white/90">
@@ -430,7 +411,7 @@
                     <p class="text-[10px] font-black uppercase tracking-widest text-orange-500 group-hover:text-white mb-6">
                         04 / Consistent Delivery
                     </p>
-                    <h4 class="text-2xl font-black uppercase mb-6">
+                    <h4 class="text-2xl font-black uppercase mb-6 min-h-[64px]">
                         Process-Driven Execution
                     </h4>
                     <p class="text-slate-400 text-md leading-relaxed group-hover:text-white/90">
@@ -452,7 +433,7 @@
 
     </section>
 
-    <section id="products" class="h-screen bg-[#f4f4f4] px-6 md:px-12 flex flex-col py-20 overflow-hidden">
+    <section id="products" class=" bg-[#f4f4f4] px-6 md:px-12 flex flex-col py-20">
         <div class="max-w-[1700px] mx-auto w-full h-full flex flex-col">
             
             <div class="mb-12 reveal shrink-0">
@@ -460,12 +441,12 @@
                 <h3 class="text-5xl font-black uppercase tracking-tighter">Structural Lineup</h3>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 md:grid-rows-1 gap-8 flex-1 min-h-0 h-full mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 gap-8 mb-4">
                 
-                <div id="gallery-card-rigid-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-rigid-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-cover bg-center border border-slate-100">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
-                            <h4 class="text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
+                            <h4 class="text-3xl lg:text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500"> Rigid <br /> <span class="text-orange-600 group-hover:text-black duration-500">Boxes</span></h4>
                         </div>
                         <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">Electronics, Luxury Gifts <br> Corporate Gift & Premium Retail</p>
                     </div>
@@ -501,12 +482,12 @@
                 </div>
 
                 
-                <div id="gallery-card-mono-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/mono_carton.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-mono-box" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/mono_carton.png')] bg-cover bg-center border border-slate-100">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
-                            <h4 class="text-4xl text-center font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
+                            <h4 class="text-3xl lg:text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500">Mono <span class="text-orange-600 group-hover:text-black duration-500">Cartons</span></h4>
                         </div>
-                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-center">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
                     </div>
 
                     <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0">
@@ -540,12 +521,12 @@
                     </div>
                 </div>
 
-                <div id="gallery-card-paperboard" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/paperboard_bags.png')] bg-cover bg-center border border-slate-100 h-full">
+                <div id="gallery-card-paperboard" class="gallery-card flex flex-col justify-between group md:col-span-1 relative overflow-hidden reveal bg-[url('./resources/paperboard_bags.png')] bg-cover bg-center border border-slate-100">
                     <div class="p-10 w-full h-full flex flex-col justify-between relative z-10 transition-opacity duration-500 group">
                         <div>
-                            <h4 class="text-4xl text-right font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
+                            <h4 class="text-3xl lg:text-4xl text-left font-extrabold text-black uppercase group-hover:text-white duration-500">Paperboard <br /> <span class="text-orange-600 group-hover:text-black duration-500">Bags</span></h4>
                         </div>
-                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-right">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
+                        <p class="text-xs font-extrabold text-orange-400 uppercase tracking-widest group-hover:opacity-0 duration-500 text-left">FMCG & Retail, Beauty & Pharma <br> Food, Beverage & E-commerce Goods</p>
                     </div>
 
                     <div class="drawer absolute inset-0 bg-[#FF5733]/100 p-10 flex flex-col justify-end text-white opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:translate-y-0">
@@ -585,7 +566,7 @@
 <section id="case-carousel" class="relative bg-[#0b0f14] text-white py-40 border-y border-white/5 overflow-hidden">
     <div class="px-6 md:px-12 max-w-[1700px] mx-auto mb-20 flex flex-col items-center">
         <p class="text-[11px] font-black uppercase tracking-[0.6em] text-orange-500 mb-8">/ Structural Archive</p>
-        <h2 class="text-6xl md:text-6xl font-black uppercase leading-[0.9] tracking-tighter text-center">Built. Engineered. Delivered.</h2>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-[0.9] tracking-tighter text-center">Built. Engineered. Delivered.</h2>
     </div>
 
     <!-- Fade edges -->
@@ -613,7 +594,7 @@
 
 
 
-<section id="about" class="bg-[#f4f4f4] text-slate-900 pt-40 pb-12 px-6 md:px-12 relative overflow-hidden md:min-h-screen">
+<section id="about" class="bg-[#f4f4f4] text-slate-900 pt-40 pb-12 px-6 md:px-12 relative overflow-hidden ">
     <div class="absolute inset-0 opacity-[0.04] pointer-events-none"
          style="background-image: radial-gradient(circle, #000 1px, transparent 1px); background-size: 40px 40px;">
     </div>
@@ -713,7 +694,7 @@
 </section>
 
     <section id="location" class="py-28 bg-[#0c0f14] px-6 md:px-24 overflow-hidden border-t border-white/5">
-        <div class="w-full grid sm:grid-cols-1 lg:grid-cols-2 gap-4 justify-center">
+        <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 justify-center">
             
             <!-- LEFT CONTENT -->
             <div class="reveal active">

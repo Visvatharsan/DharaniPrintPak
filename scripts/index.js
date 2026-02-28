@@ -143,57 +143,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const productParent = document.getElementById('product-flex-container');
 
-    document.querySelectorAll('.product-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const isAlreadyActive = card.classList.contains('active');
+    if (productParent) {
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const isAlreadyActive = card.classList.contains('active');
 
-            // Reset all cards to equal width and hide all details
-            document.querySelectorAll('.product-card').forEach(c => {
-                c.classList.remove('active');
-                c.style.transform = "scale(1)";
-                c.style.flex = "1";
-                c.style.height = "10vh";
-                productParent.classList.remove("w-full");
-                productParent.classList.add("w-1/2");
-            });
-            
-            // If the clicked card wasn't active, expand it
-            if (!isAlreadyActive) {
-                card.classList.add('active');
-                card.style.flex = "3";
-                card.style.transfrom = "scale(2)"; // Expand ratio
-                card.style.height = "100%";
-                productParent.classList.remove("w-1/2");
-                productParent.classList.add("w-full");
-                
-                // Set other siblings to shrink
-                document.querySelectorAll('.product-card:not(.active)').forEach(c => {
-                    c.style.transform = "scale(0.5)";
+                document.querySelectorAll('.product-card').forEach(c => {
+                    c.classList.remove('active');
+                    c.style.transform = "scale(1)";
+                    c.style.flex = "1";
+                    c.style.height = "10vh";
+                    productParent.classList.remove("w-full");
+                    productParent.classList.add("w-1/2");
                 });
-            }
+
+                if (!isAlreadyActive) {
+                    card.classList.add('active');
+                    card.style.flex = "3";
+                    card.style.transform = "scale(1.02)";
+                    card.style.height = "100%";
+                    productParent.classList.remove("w-1/2");
+                    productParent.classList.add("w-full");
+
+                    document.querySelectorAll('.product-card:not(.active)').forEach(c => {
+                        c.style.transform = "scale(0.5)";
+                    });
+                }
+            });
         });
-    });
+    }
 
 
 
 
     const input = document.querySelector("#phone");
 
-    const iti = window.intlTelInput(input, {
-    initialCountry: "auto",
-    geoIpLookup: callback => {
-        fetch("https://ipapi.co/json")
-        .then(res => res.json())
-        .then(data => callback(data.country_code))
-        .catch(() => callback("us"));
-    },
-    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
-    });
+    let iti;
+    if (input && window.intlTelInput) {
+        iti = window.intlTelInput(input, {
+            initialCountry: "auto",
+            geoIpLookup: callback => {
+                fetch("https://ipapi.co/json")
+                .then(res => res.json())
+                .then(data => callback(data.country_code))
+                .catch(() => callback("us"));
+            },
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@24.5.0/build/js/utils.js",
+        });
+    }
 
     // Inject full international number before Netlify submission
     const form = document.querySelector('form[name="rfq"]');
 
-    if (form) {
+    if (form && input && iti) {
         form.addEventListener("submit", function (e) {
             if (!iti.isValidNumber()) {
             e.preventDefault();
